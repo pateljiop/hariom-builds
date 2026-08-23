@@ -2,12 +2,12 @@
 import React, { useRef, useEffect } from 'react';
 
 const SOCIALS = [
-  { platform: 'GitHub', handle: 'github.com/pateljiop', description: 'Hariom’s code, builds & experiments', url: 'https://github.com/pateljiop', color: '#f5f3ee' },
-  { platform: 'LinkedIn', handle: 'linkedin.com/in/pateljiop', description: 'Hariom’s professional profile', url: 'https://linkedin.com/in/pateljiop', color: '#5ea7ff' },
-  { platform: 'Instagram', handle: '@patelji_op', description: 'Hariom’s personal builds & updates', url: 'https://instagram.com/patelji_op', color: '#ff7a8a' },
-  { platform: 'Telegram', handle: '@patelji_op', description: 'Directly reach Hariom', url: 'https://t.me/patelji_op', color: '#55bfff' },
-  { platform: 'Email', handle: 'hariompatel.dev@gmail.com', description: 'Direct enquiries to Hariom', url: 'mailto:hariompatel.dev@gmail.com', color: '#ffb86b' },
-  { platform: 'Freelance Portfolio', handle: 'hariom-portfolio.pages.dev/freelance', description: 'Hariom’s freelance work, services & demos', url: 'https://hariom-portfolio.pages.dev/freelance', color: '#b8ff3d' },
+  { platform: 'GitHub', handle: 'github.com/pateljiop', description: 'Hariom Patel’s personal GitHub — code, builds & experiments.', url: 'https://github.com/pateljiop', color: '#f7f7f2' },
+  { platform: 'LinkedIn', handle: 'linkedin.com/in/pateljiop', description: 'Hariom Patel’s personal professional profile.', url: 'https://linkedin.com/in/pateljiop', color: '#6ea8ff' },
+  { platform: 'Instagram', handle: '@patelji_op', description: 'Hariom Patel’s personal Instagram — builds & updates.', url: 'https://instagram.com/patelji_op', color: '#ff7a8a' },
+  { platform: 'Telegram', handle: '@patelji_op', description: 'Hariom Patel’s personal Telegram contact.', url: 'https://t.me/patelji_op', color: '#55bfff' },
+  { platform: 'Email', handle: 'hariompatel.dev@gmail.com', description: 'Direct personal contact for Hariom Patel.', url: 'mailto:hariompatel.dev@gmail.com', color: '#ffb86b' },
+  { platform: 'Freelance Portfolio', handle: 'hariom-portfolio.pages.dev/freelance', description: 'Hariom Patel’s freelance portfolio, services & demos.', url: 'https://hariom-portfolio.pages.dev/freelance', color: '#c6ff3d' },
 ];
 
 function SocialIcon({ platform }: { platform: string }) {
@@ -30,17 +30,17 @@ export default function SocialSection() {
     return () => observer.disconnect();
   }, []);
 
-  return <section id="social" ref={sectionRef} className="py-24 px-6 relative" aria-labelledby="social-heading">
+  return <section id="social" ref={sectionRef} className="py-28 px-6 relative" aria-labelledby="social-heading">
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-16 reveal-up">
-        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-4 block">Founder’s Digital Presence</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-4 block">Hariom Patel · Personal Profiles</span>
         <h2 id="social-heading" className="text-section-title font-extrabold uppercase text-foreground mb-4">CONNECT WITH <span className="text-gradient-cyan">HARIOM</span></h2>
-        <p className="max-w-xl mx-auto text-sm leading-7 text-muted-foreground">These are Hariom’s personal profiles and direct channels — not Hariom Builds company accounts.</p>
+        <p className="max-w-2xl mx-auto text-sm leading-7 text-muted-foreground">The links below belong to <strong className="text-foreground">Hariom Patel personally</strong>. They are not Hariom Builds company social accounts.</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {SOCIALS.map((social, i) => <a key={social.platform} href={social.url} target={social.url.startsWith('mailto:') ? undefined : '_blank'} rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'} className="reveal-up glass-card rounded-2xl p-6 gradient-border group hover:scale-[1.03] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" style={{ transitionDelay: `${i * 80}ms` }} aria-label={`${social.platform}: ${social.handle}`}>
-          <div className="flex items-start justify-between mb-4"><div className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" style={{ background: `${social.color}15`, color: social.color }}><SocialIcon platform={social.platform} /></div><svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-muted-foreground group-hover:text-primary transition-colors mt-1" aria-hidden="true"><path d="M3 13L13 3M13 3H6M13 3v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
-          <h3 className="text-sm font-extrabold text-foreground mb-1">{social.platform}</h3><p className="text-xs font-medium mb-2" style={{ color: social.color }}>{social.handle}</p><p className="text-muted-foreground text-xs leading-relaxed">{social.description}</p>
+        {SOCIALS.map((social, i) => <a key={social.platform} href={social.url} target={social.url.startsWith('mailto:') ? undefined : '_blank'} rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'} className="reveal-up glass-card rounded-2xl p-6 gradient-border group hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" style={{ transitionDelay: `${i * 80}ms` }} aria-label={`${social.platform}: ${social.handle}`}>
+          <div className="flex items-start justify-between mb-5"><div className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" style={{ background: `${social.color}15`, color: social.color }}><SocialIcon platform={social.platform} /></div><span className="text-[9px] font-bold uppercase tracking-[0.18em] text-muted-foreground border border-border rounded-full px-2.5 py-1">Personal</span></div>
+          <h3 className="text-sm font-extrabold text-foreground mb-1">{social.platform}</h3><p className="text-xs font-semibold mb-3" style={{ color: social.color }}>{social.handle}</p><p className="text-muted-foreground text-xs leading-relaxed">{social.description}</p>
         </a>)}
       </div>
     </div>
