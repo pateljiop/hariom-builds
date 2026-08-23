@@ -17,11 +17,12 @@ interface FormState {
   email: string;
   services: string[];
   message: string;
+  website: string;
 }
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [form, setForm] = useState<FormState>({ name: '', business: '', email: '', services: [], message: '' });
+  const [form, setForm] = useState<FormState>({ name: '', business: '', email: '', services: [], message: '', website: '' });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -49,6 +50,23 @@ export default function ContactSection() {
     setSubmitting(true);
     setError('');
 
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const business = form.business.trim();
+    const message = form.message.trim();
+
+    // Honeypot: real visitors never see or fill this field.
+    if (form.website) {
+      setSubmitting(false);
+      return;
+    }
+
+    if (!name || !email) {
+      setError('Please add your name and email before sending.');
+      setSubmitting(false);
+      return;
+    }
+
     try {
       const response = await fetch('https://formsubmit.co/ajax/hariompatel.dev@gmail.com', {
         method: 'POST',
@@ -57,14 +75,17 @@ export default function ContactSection() {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          name: form.name,
-          business: form.business || 'Not provided',
-          email: form.email,
-          services: form.services.length ? form.services.map((id) => SERVICE_OPTIONS.find((s) => s.id === id)?.label || id).join(', ') : 'Not specified',
-          message: form.message || 'No additional message provided.',
-          _subject: `New Hariom Builds enquiry from ${form.name}`,
+          name,
+          business: business || 'Not provided',
+          email,
+          services: form.services.length
+            ? form.services.map((id) => SERVICE_OPTIONS.find((s) => s.id === id)?.label || id).join(', ')
+            : 'Not specified',
+          message: message || 'No additional message provided.',
+          _subject: `New Hariom Builds enquiry from ${name}`,
           _template: 'table',
           _captcha: 'true',
+          _honey: form.website,
         }),
       });
 
@@ -72,7 +93,7 @@ export default function ContactSection() {
       const result = await response.json().catch(() => ({ success: true }));
       if (result.success === false) throw new Error('Submission failed');
 
-      setForm({ name: '', business: '', email: '', services: [], message: '' });
+      setForm({ name: '', business: '', email: '', services: [], message: '', website: '' });
       setSubmitted(true);
     } catch {
       setError('We could not send your message right now. Please email hariompatel.dev@gmail.com directly.');
@@ -92,7 +113,7 @@ export default function ContactSection() {
             HAVE A PROBLEM <span className="text-gradient-cyan">WORTH BUILDING?</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Tell us what you&apos;re trying to improve. We&apos;ll figure out what can be built.
+            Tell me what you&apos;re trying to improve. I&apos;ll figure out what can be built.
           </p>
         </div>
 
@@ -103,7 +124,7 @@ export default function ContactSection() {
           </div>
 
           {submitted ? (
-            <div className="text-center py-16 space-y-6">
+            <div className="text-center py-16 space-y-6" role="status" aria-live="polite">
               <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto glow-cyan">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 16l7 7 13-13" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </div>
@@ -116,17 +137,17 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label htmlFor="contact-name" className="block text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Name <span className="text-accent" aria-hidden="true">*</span></label>
-                  <input id="contact-name" type="text" required value={form.name} onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))} placeholder="Your name" className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" aria-required="true" />
+                  <input id="contact-name" type="text" required autoComplete="name" value={form.name} onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))} placeholder="Your name" className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" aria-required="true" />
                 </div>
                 <div>
                   <label htmlFor="contact-business" className="block text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Business</label>
-                  <input id="contact-business" type="text" value={form.business} onChange={(e) => setForm((p) => ({ ...p, business: e.target.value }))} placeholder="Your business name" className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" />
+                  <input id="contact-business" type="text" autoComplete="organization" value={form.business} onChange={(e) => setForm((p) => ({ ...p, business: e.target.value }))} placeholder="Your business name" className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" />
                 </div>
               </div>
 
               <div className="mb-6">
                 <label htmlFor="contact-email" className="block text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Email <span className="text-accent" aria-hidden="true">*</span></label>
-                <input id="contact-email" type="email" required value={form.email} onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))} placeholder="your@email.com" className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" aria-required="true" />
+                <input id="contact-email" type="email" required autoComplete="email" value={form.email} onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))} placeholder="your@email.com" className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors" aria-required="true" />
               </div>
 
               <div className="mb-6">
@@ -141,8 +162,13 @@ export default function ContactSection() {
               </div>
 
               <div className="mb-8">
-                <label htmlFor="contact-message" className="block text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Tell us about the problem</label>
-                <textarea id="contact-message" rows={5} value={form.message} onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))} placeholder="Describe the problem you're trying to solve..." className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none" />
+                <label htmlFor="contact-message" className="block text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-2">Tell me about the problem</label>
+                <textarea id="contact-message" rows={5} value={form.message} onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))} placeholder="Describe the problem you&apos;re trying to solve..." className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none" />
+              </div>
+
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="contact-website">Website</label>
+                <input id="contact-website" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => setForm((p) => ({ ...p, website: e.target.value }))} />
               </div>
 
               {error && (
@@ -150,7 +176,7 @@ export default function ContactSection() {
               )}
 
               <div className="flex flex-col sm:flex-row items-center gap-6">
-                <button type="submit" disabled={submitting || !form.name || !form.email} className="magnetic-btn w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold text-sm uppercase tracking-widest hover:bg-secondary transition-all glow-cyan disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Submit project inquiry">
+                <button type="submit" disabled={submitting || !form.name.trim() || !form.email.trim()} className="magnetic-btn w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold text-sm uppercase tracking-widest hover:bg-secondary transition-all glow-cyan disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Submit project inquiry">
                   {submitting ? (<><svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="31.4" strokeDashoffset="10" /></svg>Sending...</>) : (<>START THE CONVERSATION →</>)}
                 </button>
                 <p className="text-muted-foreground text-xs text-center sm:text-left">Or email <a href="mailto:hariompatel.dev@gmail.com" className="text-primary hover:underline">hariompatel.dev@gmail.com</a></p>
