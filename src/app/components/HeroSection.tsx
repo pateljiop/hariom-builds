@@ -4,13 +4,13 @@ import React, { useEffect, useRef, useState } from 'react';
 interface Node { id: string; label: string; color: string; size: number; orbitRadius: number; orbitSpeed: number; orbitAngle: number; }
 
 const NODES: Node[] = [
-  { id: 'core', label: 'DIGITAL SYSTEM', color: '#00D2FF', size: 48, orbitRadius: 0, orbitSpeed: 0, orbitAngle: 0 },
-  { id: 'web', label: 'WEB', color: '#007BFF', size: 32, orbitRadius: 110, orbitSpeed: 0.4, orbitAngle: 0 },
-  { id: 'auto', label: 'AUTO', color: '#00D2FF', size: 28, orbitRadius: 110, orbitSpeed: 0.4, orbitAngle: 120 },
-  { id: 'ai', label: 'AI', color: '#FF2055', size: 28, orbitRadius: 110, orbitSpeed: 0.4, orbitAngle: 240 },
-  { id: 'react', label: 'React', color: '#61DAFB', size: 20, orbitRadius: 170, orbitSpeed: 0.25, orbitAngle: 30 },
-  { id: 'nextjs', label: 'Next.js', color: '#FFFFFF', size: 20, orbitRadius: 170, orbitSpeed: 0.25, orbitAngle: 150 },
-  { id: 'ts', label: 'TS', color: '#3178C6', size: 18, orbitRadius: 170, orbitSpeed: 0.25, orbitAngle: 270 },
+  { id: 'core', label: 'DIGITAL SYSTEM', color: '#C6FF3D', size: 52, orbitRadius: 0, orbitSpeed: 0, orbitAngle: 0 },
+  { id: 'web', label: 'WEB', color: '#8B5CF6', size: 32, orbitRadius: 110, orbitSpeed: 0.4, orbitAngle: 0 },
+  { id: 'auto', label: 'AUTO', color: '#C6FF3D', size: 28, orbitRadius: 110, orbitSpeed: 0.4, orbitAngle: 120 },
+  { id: 'ai', label: 'AI', color: '#FF6B35', size: 28, orbitRadius: 110, orbitSpeed: 0.4, orbitAngle: 240 },
+  { id: 'react', label: 'React', color: '#A78BFA', size: 20, orbitRadius: 170, orbitSpeed: 0.25, orbitAngle: 30 },
+  { id: 'nextjs', label: 'Next.js', color: '#F7F7F2', size: 20, orbitRadius: 170, orbitSpeed: 0.25, orbitAngle: 150 },
+  { id: 'ts', label: 'TS', color: '#C6FF3D', size: 18, orbitRadius: 170, orbitSpeed: 0.25, orbitAngle: 270 },
 ];
 
 export default function HeroSection() {
@@ -67,41 +67,78 @@ export default function HeroSection() {
       ctx.clearRect(0, 0, width, height);
       const cx = width / 2 + (mouseRef.current.x - 0.5) * 20;
       const cy = height / 2 + (mouseRef.current.y - 0.5) * 20;
+
       [110, 170].forEach((r, i) => {
-        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
-        ctx.strokeStyle = i === 0 ? 'rgba(0,210,255,0.08)' : 'rgba(0,123,255,0.05)';
-        ctx.lineWidth = 1; ctx.setLineDash([4, 8]); ctx.stroke(); ctx.setLineDash([]);
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.strokeStyle = i === 0 ? 'rgba(198,255,61,0.18)' : 'rgba(139,92,246,0.13)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 8]);
+        ctx.stroke();
+        ctx.setLineDash([]);
       });
+
       const nodePositions: Record<string, { x: number; y: number }> = {};
       NODES.forEach((node) => {
         if (!node.orbitRadius) { nodePositions[node.id] = { x: cx, y: cy }; return; }
         const angle = ((node.orbitAngle + t * node.orbitSpeed) * Math.PI) / 180;
         nodePositions[node.id] = { x: cx + Math.cos(angle) * node.orbitRadius, y: cy + Math.sin(angle) * node.orbitRadius };
       });
+
       ['web', 'auto', 'ai'].forEach((id) => {
-        const pos = nodePositions[id]; const core = nodePositions.core;
-        ctx.beginPath(); ctx.moveTo(core.x, core.y); ctx.lineTo(pos.x, pos.y);
+        const pos = nodePositions[id];
+        const core = nodePositions.core;
+        ctx.beginPath();
+        ctx.moveTo(core.x, core.y);
+        ctx.lineTo(pos.x, pos.y);
         const grad = ctx.createLinearGradient(core.x, core.y, pos.x, pos.y);
-        grad.addColorStop(0, 'rgba(0,210,255,0.3)'); grad.addColorStop(1, 'rgba(0,210,255,0)');
-        ctx.strokeStyle = grad; ctx.lineWidth = 1; ctx.stroke();
+        grad.addColorStop(0, 'rgba(198,255,61,0.42)');
+        grad.addColorStop(0.55, 'rgba(139,92,246,0.22)');
+        grad.addColorStop(1, 'rgba(255,107,53,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
       });
+
       NODES.forEach((node) => {
-        const pos = nodePositions[node.id]; if (!pos) return;
-        const grd = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, node.size * 1.5);
-        grd.addColorStop(0, node.color + '30'); grd.addColorStop(1, 'transparent');
-        ctx.beginPath(); ctx.arc(pos.x, pos.y, node.size * 1.5, 0, Math.PI * 2); ctx.fillStyle = grd; ctx.fill();
-        ctx.beginPath(); ctx.arc(pos.x, pos.y, node.size / 2, 0, Math.PI * 2);
-        ctx.fillStyle = node.id === 'core' ? node.color : node.color + '20'; ctx.fill();
-        if (node.id !== 'core') { ctx.beginPath(); ctx.arc(pos.x, pos.y, node.size / 2, 0, Math.PI * 2); ctx.strokeStyle = node.color + '80'; ctx.lineWidth = 1.5; ctx.stroke(); }
+        const pos = nodePositions[node.id];
+        if (!pos) return;
+        const grd = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, node.size * 1.7);
+        grd.addColorStop(0, node.color + '55');
+        grd.addColorStop(0.45, node.color + '18');
+        grd.addColorStop(1, 'transparent');
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, node.size * 1.7, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, node.size / 2, 0, Math.PI * 2);
+        ctx.fillStyle = node.id === 'core' ? node.color : node.color + '25';
+        ctx.fill();
+        if (node.id !== 'core') {
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, node.size / 2, 0, Math.PI * 2);
+          ctx.strokeStyle = node.color + 'AA';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
         ctx.font = `bold ${node.id === 'core' ? 11 : 9}px Plus Jakarta Sans, sans-serif`;
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = node.color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = node.color;
         ctx.fillText(node.label, pos.x, node.id === 'core' ? pos.y : pos.y + node.size / 2 + 12);
       });
+
       t += 0.5;
       animRef.current = requestAnimationFrame(draw);
     };
     animRef.current = requestAnimationFrame(draw);
-    return () => { cancelAnimationFrame(animRef.current); window.removeEventListener('resize', resize); canvas.removeEventListener('mousemove', handleMouseMove); };
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      window.removeEventListener('resize', resize);
+      canvas.removeEventListener('mousemove', handleMouseMove);
+    };
   }, [mounted, reducedMotion]);
 
   return (
