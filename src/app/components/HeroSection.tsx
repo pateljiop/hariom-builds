@@ -15,7 +15,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-end">
           <div className="lg:col-span-8">
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-primary mb-7">
-              Independent digital studio · Hariom Patel
+              Independent digital studio · Websites · Automation · Systems
             </p>
 
             <h1 className="max-w-5xl text-[clamp(3.5rem,8.5vw,8rem)] leading-[.9] tracking-[-.055em] font-extrabold text-foreground">
