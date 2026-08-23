@@ -5,7 +5,7 @@ import HeroSection from './components/HeroSection';
 import ScrollStorySection from './components/ScrollStorySection';
 import SolutionsSection from './components/SolutionsSection';
 import WorkSection from './components/WorkSection';
-import LabsSection from './components/LabsSection';
+import LabsSection from './components/LabSection';
 import TechOrbitSection from './components/TechOrbitSection';
 import ProcessSection from './components/ProcessSection';
 import WhySection from './components/WhySection';
