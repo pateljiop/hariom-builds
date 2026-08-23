@@ -1,92 +1,82 @@
-/* Hariom Builds — high-contrast premium visual system */
+/* Hariom Builds — restrained studio visual system */
 :root {
-  --background: #050506;
-  --foreground: #f7f7f2;
-  --primary: #c6ff3d;
-  --primary-foreground: #050506;
-  --secondary: #8b5cf6;
-  --secondary-foreground: #ffffff;
-  --accent: #ff6b35;
-  --accent-foreground: #050506;
-  --muted: #111217;
-  --muted-foreground: #a6a7ad;
-  --card: #0b0c10;
-  --card-foreground: #f7f7f2;
-  --border: rgba(247, 247, 242, 0.14);
-  --input: #111217;
-  --ring: #c6ff3d;
+  --background: #0b0b0a;
+  --foreground: #f5f3ee;
+  --primary: #c7ff3d;
+  --primary-foreground: #0b0b0a;
+  --secondary: #e8e5dc;
+  --secondary-foreground: #0b0b0a;
+  --accent: #c7ff3d;
+  --accent-foreground: #0b0b0a;
+  --muted: #171715;
+  --muted-foreground: #9a9891;
+  --card: #11110f;
+  --card-foreground: #f5f3ee;
+  --border: rgba(245,243,238,.12);
+  --input: #171715;
+  --ring: #c7ff3d;
 }
 
-body {
-  background:
-    radial-gradient(circle at 82% 6%, rgba(139, 92, 246, 0.18), transparent 28rem),
-    radial-gradient(circle at 6% 36%, rgba(198, 255, 61, 0.09), transparent 24rem),
-    radial-gradient(circle at 70% 72%, rgba(255, 107, 53, 0.07), transparent 26rem),
-    #050506;
-}
+body { background: #0b0b0a; color: #f5f3ee; }
+::selection { background: #c7ff3d; color: #0b0b0a; }
 
-::selection { background: rgba(198, 255, 61, 0.28); color: #ffffff; }
+.grain-overlay { opacity: .012; }
 
-.glass {
-  background: rgba(5, 5, 6, 0.82);
-  border-color: rgba(247, 247, 242, 0.14);
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.36);
-}
-
+.glass,
 .glass-card {
-  background: linear-gradient(145deg, rgba(20, 21, 26, 0.94), rgba(8, 9, 12, 0.86));
-  border-color: rgba(247, 247, 242, 0.13);
-  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.28);
+  background: rgba(17,17,15,.88);
+  border-color: rgba(245,243,238,.10);
+  box-shadow: none;
 }
 
 .glass-card:hover {
-  border-color: rgba(198, 255, 61, 0.35);
-  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.4), 0 0 36px rgba(198, 255, 61, 0.07);
+  border-color: rgba(199,255,61,.28);
+  box-shadow: 0 24px 70px rgba(0,0,0,.28);
 }
 
-.glow-cyan, .glow-blue {
-  box-shadow: 0 0 0 1px rgba(198, 255, 61, 0.16), 0 16px 55px rgba(198, 255, 61, 0.18);
-}
+.glow-cyan,
+.glow-blue,
+.glow-red,
+.text-glow-cyan { box-shadow: none; text-shadow: none; }
 
-.glow-red {
-  box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.16), 0 16px 55px rgba(255, 107, 53, 0.14);
-}
-
-.text-glow-cyan { text-shadow: 0 0 42px rgba(198, 255, 61, 0.28); }
-
-.text-gradient-cyan {
-  background: linear-gradient(100deg, #c6ff3d 0%, #ffffff 48%, #a78bfa 100%);
-}
-
+.text-gradient-cyan,
 .text-gradient-accent {
-  background: linear-gradient(100deg, #ff6b35 0%, #ffb36b 100%);
+  background: none;
+  color: #c7ff3d;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
 }
 
-.grid-bg, .grid-bg-dense {
+.grid-bg,
+.grid-bg-dense {
   background-image:
-    linear-gradient(rgba(198, 255, 61, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(198, 255, 61, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(245,243,238,.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,243,238,.032) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
 
-.blob-cyan { background: radial-gradient(circle, rgba(198, 255, 61, 0.12) 0%, transparent 70%); }
-.blob-blue { background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, transparent 70%); }
-.blob-red { background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%); }
+.blob-cyan,
+.blob-blue,
+.blob-red { display: none; }
 
 .gradient-border::before {
-  background: linear-gradient(135deg, rgba(198, 255, 61, 0.62), rgba(139, 92, 246, 0.38), rgba(255, 107, 53, 0.32));
+  background: linear-gradient(135deg, rgba(199,255,61,.34), rgba(245,243,238,.08));
 }
 
 .tech-tag {
-  background: rgba(198, 255, 61, 0.09);
-  border-color: rgba(198, 255, 61, 0.3);
-  color: #c6ff3d;
-  box-shadow: inset 0 0 16px rgba(198, 255, 61, 0.025);
+  background: rgba(245,243,238,.045);
+  border-color: rgba(245,243,238,.14);
+  color: #bdbab2;
+  box-shadow: none;
 }
 
-.process-line { background: linear-gradient(180deg, #c6ff3d 0%, #8b5cf6 52%, #ff6b35 100%); }
+.process-line {
+  background: linear-gradient(180deg, #c7ff3d 0%, rgba(199,255,61,.34) 55%, transparent 100%);
+}
+
 .glow-line-segment {
-  background: linear-gradient(180deg, transparent 0%, #c6ff3d 30%, #8b5cf6 70%, transparent 100%);
-  box-shadow: 0 0 14px rgba(198, 255, 61, 0.7);
+  background: linear-gradient(180deg, transparent 0%, #c7ff3d 35%, transparent 100%);
+  box-shadow: none;
 }
 
 section { isolation: isolate; }
