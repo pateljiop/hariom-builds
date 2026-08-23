@@ -24,6 +24,7 @@ export default function ContactSection() {
   const [form, setForm] = useState<FormState>({ name: '', business: '', email: '', services: [], message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -46,10 +47,38 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    // Mock submission — backend integration point
-    await new Promise((res) => setTimeout(res, 1500));
-    setSubmitting(false);
-    setSubmitted(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/hariompatel.dev@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          business: form.business || 'Not provided',
+          email: form.email,
+          services: form.services.length ? form.services.map((id) => SERVICE_OPTIONS.find((s) => s.id === id)?.label || id).join(', ') : 'Not specified',
+          message: form.message || 'No additional message provided.',
+          _subject: `New Hariom Builds enquiry from ${form.name}`,
+          _template: 'table',
+          _captcha: 'true',
+        }),
+      });
+
+      if (!response.ok) throw new Error('Submission failed');
+      const result = await response.json().catch(() => ({ success: true }));
+      if (result.success === false) throw new Error('Submission failed');
+
+      setForm({ name: '', business: '', email: '', services: [], message: '' });
+      setSubmitted(true);
+    } catch {
+      setError('We could not send your message right now. Please email hariompatel.dev@gmail.com directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -79,7 +108,7 @@ export default function ContactSection() {
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 16l7 7 13-13" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </div>
               <h3 className="text-2xl font-extrabold text-foreground">Message Received.</h3>
-              <p className="text-muted-foreground">We&apos;ll look at your business before we respond. Expect a thoughtful reply within 24–48 hours.</p>
+              <p className="text-muted-foreground">Your enquiry has been sent to Hariom. Expect a thoughtful reply within 24–48 hours.</p>
               <button onClick={() => setSubmitted(false)} className="px-6 py-3 border border-border text-muted-foreground rounded-full text-xs font-bold uppercase tracking-widest hover:border-primary hover:text-primary transition-all">Send Another</button>
             </div>
           ) : (
@@ -116,11 +145,15 @@ export default function ContactSection() {
                 <textarea id="contact-message" rows={5} value={form.message} onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))} placeholder="Describe the problem you're trying to solve..." className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none" />
               </div>
 
+              {error && (
+                <p className="mb-6 text-sm text-accent" role="alert">{error}</p>
+              )}
+
               <div className="flex flex-col sm:flex-row items-center gap-6">
                 <button type="submit" disabled={submitting || !form.name || !form.email} className="magnetic-btn w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold text-sm uppercase tracking-widest hover:bg-secondary transition-all glow-cyan disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Submit project inquiry">
                   {submitting ? (<><svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="31.4" strokeDashoffset="10" /></svg>Sending...</>) : (<>START THE CONVERSATION →</>)}
                 </button>
-                <p className="text-muted-foreground text-xs text-center sm:text-left">Use the form above for project enquiries.</p>
+                <p className="text-muted-foreground text-xs text-center sm:text-left">Or email <a href="mailto:hariompatel.dev@gmail.com" className="text-primary hover:underline">hariompatel.dev@gmail.com</a></p>
               </div>
             </form>
           )}
