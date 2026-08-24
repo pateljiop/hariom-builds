@@ -33,15 +33,14 @@
     "recharts": "^2.15.2",
     "autoprefixer": "10.4.2",
     "postcss": "8.4.8",
-    "tailwindcss": "3.4.6",
-    "@opennextjs/cloudflare": "latest"
+    "tailwindcss": "3.4.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@netlify/plugin-nextjs": "^5.11.1",
     "@types/node": "^20",
     "@types/react": "19.0.3",
-    "@types/react-dom": "19.0.3",
+    "@types/react-dom": "^19.0.3",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
     "eslint": "^9",
