@@ -1,62 +1,6 @@
 'use client';
-
 import Image from 'next/image';
+import { Database, Globe2, GitBranch, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
-import { Activity, Database, Globe2, Server } from 'lucide-react';
-
-const nodes = [
-  { id: 1, label: 'API Gateway', detail: 'FastAPI request routing and service boundaries.', icon: Globe2, x: '24%', y: '35%' },
-  { id: 2, label: 'CI/CD Cron Workers', detail: 'GitHub Actions schedules repeatable scraper jobs.', icon: Activity, x: '72%', y: '27%' },
-  { id: 3, label: 'Storage & DB Tier', detail: 'PostgreSQL / SQLite with indexed relational queries.', icon: Database, x: '66%', y: '72%' },
-  { id: 4, label: 'Edge Delivery', detail: 'Cloudflare edge caching and secure delivery.', icon: Server, x: '22%', y: '72%' },
-];
-
-export default function SystemsBlueprint() {
-  const [active, setActive] = useState(1);
-
-  return (
-    <section className="studio-section" id="systems">
-      <div className="studio-shell">
-        <div className="section-heading">
-          <div className="eyebrow">03 / SYSTEMS MAP</div>
-          <h2>ARCHITECTURE WITH A PULSE.</h2>
-        </div>
-
-        <div className="blueprint">
-          <Image
-            src="/assets/images/1790442471929.jpg"
-            alt="Cyber-blue HariomBuilds technical architecture schematic"
-            fill
-            sizes="100vw"
-            className="blueprint-image"
-          />
-          <div className="blueprint-overlay" />
-          <div className="blueprint-title">HARIOMBUILDS // SYSTEM SCHEMATIC</div>
-
-          {nodes.map((node) => {
-            const Icon = node.icon;
-            return (
-              <button
-                key={node.id}
-                className="radar-node"
-                style={{ left: node.x, top: node.y }}
-                onMouseEnter={() => setActive(node.id)}
-                onFocus={() => setActive(node.id)}
-                aria-label={node.label}
-              >
-                <span className="radar-ring" />
-                <Icon size={15} />
-                {active === node.id && (
-                  <span className="radar-popover">
-                    <strong>{node.label}</strong>
-                    <small>{node.detail}</small>
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
+const nodes=[{title:'API Gateway',detail:'FastAPI routing, JWT stateless auth',icon:ShieldCheck,left:'18%',top:'38%'},{title:'CI/CD Data Harvester',detail:'GitHub Actions headless scrapers',icon:GitBranch,left:'43%',top:'66%'},{title:'Database Tier',detail:'PostgreSQL / SQLite indexed queries',icon:Database,left:'70%',top:'37%'},{title:'Edge Delivery',detail:'Cloudflare Pages edge caching',icon:Globe2,left:'79%',top:'72%'}];
+export default function SystemsBlueprint(){const[active,setActive]=useState(0);return <section className="studio-section blueprint-section" id="systems"><div className="studio-shell"><div className="section-intro"><div><span className="section-index">03 / SYSTEMS MAP</span><h2>UNDER THE<br/><span>HOOD.</span></h2></div><p>Tap a node to inspect the logical layers behind a typical HariomBuilds delivery.</p></div><div className="blueprint-frame"><Image src="/assets/images/1790442471929.jpg" alt="HariomBuilds architecture blueprint" fill sizes="100vw" className="blueprint-image-new"/><div className="blueprint-vignette"/><div className="blueprint-heading">SYSTEMS_BLUEPRINT / HARIOMBUILDS / EDGE</div>{nodes.map((n,i)=>{const Icon=n.icon;const on=active===i;return <button type="button" key={n.title} className={on?'radar-node-new active':'radar-node-new'} style={{left:n.left,top:n.top}} onClick={()=>setActive(i)} aria-label={n.title}><span className="radar-pulse"/><Icon size={15}/>{on&&<span className="radar-tooltip"><strong>{n.title}</strong><small>{n.detail}</small></span>}</button>})}<div className="blueprint-footer"><span>01</span><span>04</span><span>ARCHITECTURE LAYER</span></div></div></div></section>}
