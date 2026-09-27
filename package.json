@@ -1,19 +1,19 @@
 {
   "name": "hariom-builds",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "private": true,
   "scripts": {
     "dev": "next dev -p 4028",
     "build": "next build",
     "build:next": "next build",
-    "build:cloudflare": "npm install esbuild@0.25.4 --no-save --package-lock=false && npx @opennextjs/cloudflare@1.19.9 build",
+    "build:cloudflare": "npm install esbuild@0.28.2 --no-save --package-lock=false --legacy-peer-deps && npx @opennextjs/cloudflare@1.19.9 build",
     "start": "next dev -p 4028",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md,json}\"",
     "serve": "next start",
     "type-check": "tsc --noEmit",
-    "deploy": "npm install esbuild@0.25.4 --no-save --package-lock=false && npx @opennextjs/cloudflare@1.19.9 build && npx @opennextjs/cloudflare@1.19.9 deploy"
+    "deploy": "npm install esbuild@0.28.2 --no-save --package-lock=false --legacy-peer-deps && npx @opennextjs/cloudflare@1.19.9 build && npx @opennextjs/cloudflare@1.19.9 deploy"
   },
   "dependencies": {
     "@dhiwise/component-tagger": "^1.0.16",
