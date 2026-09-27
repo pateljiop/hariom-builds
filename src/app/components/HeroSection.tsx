@@ -1,51 +1,67 @@
 'use client';
-import React from 'react';
 
-const SERVICES = [
-  { number: '01', title: 'Websites', text: 'High-converting websites and landing pages that make a business look credible and give visitors a clear next step.' },
-  { number: '02', title: 'Automation', text: 'Lean workflows that remove repetitive work, connect tools and keep day-to-day operations moving.' },
-  { number: '03', title: 'Digital systems', text: 'Custom tools and interfaces built around the way a business actually operates.' },
-];
+import dynamic from 'next/dynamic';
+import { motion } from 'framer-motion';
+import { ArrowDown, ArrowUpRight, Cpu, Gauge, Radio, ShieldCheck } from 'lucide-react';
+
+const CyberCore3D = dynamic(() => import('./CyberCore3D'), { ssr: false });
 
 export default function HeroSection() {
-  const scrollTo = (id: string) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
-
   return (
-    <section id="hero" className="relative overflow-hidden border-b border-border" aria-label="Hariom Builds digital studio">
-      <div className="absolute inset-0 pointer-events-none hero-ambient" aria-hidden="true" />
-      <div className="relative max-w-[1320px] mx-auto px-6 sm:px-8 lg:px-10 pt-32 sm:pt-36 lg:pt-40 pb-16 lg:pb-20">
-        <div className="flex items-center gap-3 mb-10 lg:mb-14">
-          <span className="h-px w-8 bg-primary" />
-          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.26em] text-primary">Independent digital studio</p>
+    <section className="relative min-h-[92svh] overflow-hidden border-b border-white/10 pt-28" id="hero">
+      <div className="hero-grid" />
+      <div className="hero-glow hero-glow-cyan" />
+      <div className="hero-glow hero-glow-pink" />
+
+      <div className="studio-shell relative z-10">
+        <div className="telemetry-bar">
+          <span><Radio size={13} /> WORKSTATION: 5 MONITORS ACTIVE</span>
+          <span><Cpu size={13} /> KERNEL: PYTHON • NEXT.JS • FASTAPI</span>
+          <span className="text-emerald-300"><ShieldCheck size={13} /> STATUS: ACCEPTING Q2 CLIENTS</span>
         </div>
 
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-14 lg:gap-20 items-end">
+        <div className="grid min-h-[72svh] items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <h1 className="max-w-[980px] text-[clamp(4rem,8.4vw,8.8rem)] leading-[0.84] tracking-[-0.065em] font-extrabold text-foreground">
-              We build digital
-              <br />
-              <span className="text-primary">systems that work.</span>
+            <div className="eyebrow"><span className="status-dot" /> INDEPENDENT SOFTWARE STUDIO / PRAYAGRAJ</div>
+            <h1 className="display-title mt-6">
+              WE SHIP <span className="text-cyan">INSANE CODE</span>, SCALABLE APIS & AUTOMATED DATA ENGINES.
             </h1>
-            <div className="mt-10 lg:mt-12 max-w-3xl">
-              <p className="text-xl sm:text-2xl lg:text-[1.65rem] leading-[1.35] tracking-[-0.02em] text-foreground/90">Websites, automation and custom digital systems for businesses that want to look credible, work smarter and grow.</p>
-            </div>
+            <p className="mt-7 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
+              HariomBuilds is an independent solo software engineering studio operated by Hariom Patel.
+              Building end-to-end web platforms, Python automation pipelines, and high-performance backends.
+              Zero corporate fluff. 100% execution.
+            </p>
+
             <div className="mt-9 flex flex-wrap gap-3">
-              <button onClick={() => scrollTo('#contact')} className="group inline-flex items-center gap-4 rounded-full bg-primary px-7 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(199,255,61,.14)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Start a project <span className="text-base transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></button>
-              <button onClick={() => scrollTo('#work')} className="inline-flex items-center gap-3 rounded-full border border-border px-7 py-4 text-[12px] font-bold uppercase tracking-[0.14em] text-foreground transition-colors hover:border-foreground/40 hover:bg-foreground/[.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">Selected builds <span aria-hidden="true">↗</span></button>
+              <a className="neon-button" href="#contact">Book 15-Min Intro Call <ArrowUpRight size={16} /></a>
+              <a className="glass-button" href="#systems">Inspect Architecture <ArrowDown size={16} /></a>
+            </div>
+
+            <div className="mt-10 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-4">
+              {[
+                ['EDGE', 'Cloudflare'],
+                ['API', 'FastAPI'],
+                ['DATA', 'Python'],
+                ['UI', 'Next.js'],
+              ].map(([label, value]) => (
+                <div className="metric-chip" key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
             </div>
           </div>
 
-          <aside className="lg:mb-1" aria-label="What Hariom Builds offers">
-            <div className="border-t border-border pt-5">
-              <div className="flex items-center justify-between mb-7"><span className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground">What Hariom Builds</span><span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">01 — 03</span></div>
-              <div>{SERVICES.map((service, index) => <div key={service.number} className={`group py-5 ${index !== SERVICES.length - 1 ? 'border-b border-border' : ''}`}><div className="flex gap-5"><span className="text-[10px] font-bold tracking-[0.15em] text-primary pt-1">{service.number}</span><div><h2 className="text-base sm:text-lg font-bold tracking-[-0.015em] text-foreground">{service.title}</h2><p className="mt-2 text-[13px] leading-6 text-muted-foreground">{service.text}</p></div></div></div>)}</div>
+          <div className="relative mx-auto w-full max-w-[560px]">
+            <div className="core-frame">
+              <div className="core-frame-label">CORE // LIVE TELEMETRY</div>
+              <CyberCore3D />
+              <div className="core-readout">
+                <span><Gauge size={14} /> 120+ DATA NODES</span>
+                <span>ORBIT / LOCKED</span>
+              </div>
             </div>
-          </aside>
-        </div>
-
-        <div className="mt-20 lg:mt-28 flex items-center justify-between border-t border-border pt-5">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Strategy · Design · Development · Systems</span>
-          <button onClick={() => scrollTo('#solutions')} className="hidden sm:flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors">Explore the studio <span className="text-primary">↓</span></button>
+          </div>
         </div>
       </div>
     </section>
