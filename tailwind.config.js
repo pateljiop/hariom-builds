@@ -1,59 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   darkMode: 'class',
   theme: {
-    container: {
-      center: true,
-      padding: '1rem',
-    },
+    container: { center: true, padding: '1rem' },
     extend: {
-      colors: {
-        background: { DEFAULT: 'var(--background)' },
-        foreground: { DEFAULT: 'var(--foreground)' },
-        primary: {
-          DEFAULT: 'var(--primary)',
-          foreground: 'var(--primary-foreground)',
-        },
-        secondary: {
-          DEFAULT: 'var(--secondary)',
-          foreground: 'var(--secondary-foreground)',
-        },
-        accent: {
-          DEFAULT: 'var(--accent)',
-          foreground: 'var(--accent-foreground)',
-        },
-        muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
-        },
-        card: {
-          DEFAULT: 'var(--card)',
-          foreground: 'var(--card-foreground)',
-        },
-        border: 'var(--border)',
-        input: 'var(--input)',
-        ring: 'var(--ring)',
-      },
-      borderRadius: {
-        DEFAULT: 'var(--radius)',
-        sm: 'calc(var(--radius) * 0.5)',
-        lg: 'calc(var(--radius) * 1.5)',
-        xl: 'calc(var(--radius) * 2)',
-        '2xl': 'calc(var(--radius) * 3)',
-      },
-      fontFamily: {
-        sans: ['var(--font-plus-jakarta)', 'sans-serif'],
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: 'var(--foreground)',
-          },
-        },
-      },
+      colors: { void: '#080808', electric: '#00f0ff', crimson: '#ff0055', emerald: '#00ff88' },
+      fontFamily: { display: ['var(--font-display)', 'Inter', 'sans-serif'], mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'] },
+      boxShadow: { electric: '0 0 40px rgba(0,240,255,.16)', crimson: '0 0 40px rgba(255,0,85,.14)' },
     },
   },
   plugins: [require('@tailwindcss/typography')],
