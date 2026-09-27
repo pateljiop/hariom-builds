@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Github, Instagram, Send, Terminal } from 'lucide-react';
+import { Camera, Code2, Send, Terminal } from 'lucide-react';
 
 export default function MeetBuilder() {
   return (
@@ -47,8 +47,8 @@ export default function MeetBuilder() {
               and interactive digital interfaces that actually run businesses.”
             </p>
             <div className="social-row">
-              <a href="https://github.com/pateljiop" target="_blank" rel="noreferrer"><Github size={16} /> GitHub</a>
-              <a href="https://instagram.com/hariompatel.dev" target="_blank" rel="noreferrer"><Instagram size={16} /> @hariompatel.dev</a>
+              <a href="https://github.com/pateljiop" target="_blank" rel="noreferrer"><Code2 size={16} /> GitHub / pateljiop</a>
+              <a href="https://instagram.com/hariompatel.dev" target="_blank" rel="noreferrer"><Camera size={16} /> @hariompatel.dev</a>
               <a href="https://t.me/hariompatel.dev" target="_blank" rel="noreferrer"><Send size={16} /> @hariompatel.dev</a>
             </div>
           </div>

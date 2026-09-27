@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Instagram, Mail, Send, Youtube } from 'lucide-react';
+import { Camera, Code2, Mail, Send, Video } from 'lucide-react';
 
 const scheduler = process.env.NEXT_PUBLIC_CAL_URL;
 
@@ -25,11 +25,11 @@ export default function Footer() {
             <p>Independent software engineering studio. Code • Create • Automate.</p>
           </div>
           <div className="footer-links">
-            <a href="https://github.com/pateljiop" target="_blank" rel="noreferrer"><Github size={15} /> GitHub</a>
+            <a href="https://github.com/pateljiop" target="_blank" rel="noreferrer"><Code2 size={15} /> GitHub</a>
             <a href="https://linkedin.com/in/pateljiop" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://instagram.com/hariompatel.dev" target="_blank" rel="noreferrer"><Instagram size={15} /> @hariompatel.dev</a>
+            <a href="https://instagram.com/hariompatel.dev" target="_blank" rel="noreferrer"><Camera size={15} /> @hariompatel.dev</a>
             <a href="https://t.me/hariompatel.dev" target="_blank" rel="noreferrer"><Send size={15} /> @hariompatel.dev</a>
-            <a href="https://youtube.com/@TechMindCentral" target="_blank" rel="noreferrer"><Youtube size={15} /> TechMind Central</a>
+            <a href="https://youtube.com/@TechMindCentral" target="_blank" rel="noreferrer"><Video size={15} /> TechMind Central</a>
           </div>
         </div>
 

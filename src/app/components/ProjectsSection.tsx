@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Layers3 } from 'lucide-react';
+import { Code2, ExternalLink, Layers3 } from 'lucide-react';
 import { useState } from 'react';
 
 const projects = [
@@ -75,7 +75,7 @@ export default function ProjectsSection() {
               </div>
               <div className="project-actions">
                 {project.live ? <a href={project.live} target="_blank" rel="noreferrer"><ExternalLink size={15} /> Live System</a> : <span className="disabled-action">Live System / N/A</span>}
-                <a href={project.source} target="_blank" rel="noreferrer"><Github size={15} /> Source Code</a>
+                <a href={project.source} target="_blank" rel="noreferrer"><Code2 size={15} /> Source Code</a>
               </div>
             </motion.article>
           ))}
