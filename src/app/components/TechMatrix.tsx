@@ -1,31 +1,4 @@
 'use client';
-
-const groups = {
-  Languages: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'HTML5/CSS3'],
-  Frameworks: ['FastAPI', 'Django', 'Flask', 'Next.js', 'React'],
-  'Libraries & Tools': ['Three.js', 'Framer Motion', 'Tailwind CSS', 'Pandas', 'NumPy', 'BeautifulSoup', 'Requests', 'Docker'],
-  Infrastructure: ['Cloudflare Pages', 'GitHub Actions', 'Linux / Unix'],
-};
-
-export default function TechMatrix() {
-  return (
-    <section className="studio-section" id="stack">
-      <div className="studio-shell">
-        <div className="section-heading">
-          <div className="eyebrow">06 / TECH MATRIX</div>
-          <h2>THE TOOLCHAIN.</h2>
-        </div>
-        <div className="matrix-grid">
-          {Object.entries(groups).map(([name, items]) => (
-            <article className="matrix-card" key={name}>
-              <span className="matrix-label">{name}</span>
-              <div className="matrix-items">
-                {items.map((item) => <span key={item}>{item}</span>)}
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+import { motion } from 'framer-motion';
+const groups=[['LANGUAGES',['Python','TypeScript','JavaScript','SQL','HTML5 / CSS3']],['FRAMEWORKS',['FastAPI','Django','Flask','Next.js','React']],['LIBRARIES & TOOLS',['Three.js','Framer Motion','Tailwind CSS','Pandas','NumPy','BeautifulSoup','Requests','Docker']],['PLATFORMS',['Cloudflare Pages','GitHub Actions','Linux']]];
+export default function TechMatrix(){return <section className="studio-section" id="stack"><div className="studio-shell"><div className="section-intro"><div><span className="section-index">06 / TECH MATRIX</span><h2>THE<br/><span>STACK.</span></h2></div><p>Tools are grouped by the layer where they earn their place in the build.</p></div><div className="matrix-grid-new">{groups.map(([label,items],i)=><motion.article className="matrix-card-new" key={label} initial={{opacity:0,y:18}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*.06}}><span className="matrix-label">{label}</span><div className="matrix-items-new">{(items as string[]).map(item=><span key={item}>{item}</span>)}</div></motion.article>)}</div></div></section>}
