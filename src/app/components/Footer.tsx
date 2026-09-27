@@ -1,43 +1,4 @@
 'use client';
-
-import { Camera, Code2, Mail, Send, Video } from 'lucide-react';
-
-const scheduler = process.env.NEXT_PUBLIC_CAL_URL;
-
-export default function Footer() {
-  return (
-    <footer id="contact" className="studio-footer">
-      <div className="studio-shell">
-        <div className="footer-cta">
-          <div>
-            <div className="eyebrow">08 / DIRECT LINE</div>
-            <h2>HAVE A SYSTEM TO SHIP?</h2>
-            <p>Bring the problem, the workflow or the rough idea. We can scope the build directly.</p>
-          </div>
-          <a className="neon-button" href={scheduler || 'mailto:ahuzahariom@gmail.com'}>
-            {scheduler ? 'Book 15-Min Intro Call' : 'Email Hariom'} <Mail size={16} />
-          </a>
-        </div>
-
-        <div className="footer-grid">
-          <div>
-            <div className="footer-brand">HARIOM<span>.</span>BUILDS</div>
-            <p>Independent software engineering studio. Code • Create • Automate.</p>
-          </div>
-          <div className="footer-links">
-            <a href="https://github.com/pateljiop" target="_blank" rel="noreferrer"><Code2 size={15} /> GitHub</a>
-            <a href="https://linkedin.com/in/pateljiop" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://instagram.com/hariompatel.dev" target="_blank" rel="noreferrer"><Camera size={15} /> @hariompatel.dev</a>
-            <a href="https://t.me/hariompatel.dev" target="_blank" rel="noreferrer"><Send size={15} /> @hariompatel.dev</a>
-            <a href="https://youtube.com/@TechMindCentral" target="_blank" rel="noreferrer"><Video size={15} /> TechMind Central</a>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <span>© 2026 HariomBuilds. All systems operational.</span>
-          <a href="mailto:ahuzahariom@gmail.com">ahuzahariom@gmail.com</a>
-        </div>
-      </div>
-    </footer>
-  );
-}
+import { ArrowUpRight, Github, Instagram, Linkedin, Mail, Send, Youtube } from 'lucide-react';
+const socials=[['GitHub','https://github.com/pateljiop',Github],['LinkedIn','https://linkedin.com/in/pateljiop',Linkedin],['Instagram','https://instagram.com/hariompatel.dev',Instagram],['Telegram','https://t.me/hariompatel.dev',Send],['YouTube','https://www.youtube.com/@TechMindCentral',Youtube]] as const;
+export default function Footer(){return <footer className="studio-footer" id="contact"><div className="studio-shell"><div className="footer-hero"><span className="section-index">08 / CONTACT</span><h2>HAVE A SYSTEM<br/><span>TO SHIP?</span></h2><p>Tell me what you are building, where it hurts, and what “done” should look like.</p><div className="footer-actions"><a className="button-primary" href="mailto:ahuzahariom@gmail.com?subject=New%20HariomBuilds%20Project"><Mail size={16}/> Start a Conversation <ArrowUpRight size={16}/></a><a className="button-secondary" href="https://cal.com/" target="_blank" rel="noreferrer">Book a Call <ArrowUpRight size={16}/></a></div></div><div className="footer-grid-new"><div><div className="footer-brand">HARIOM<span>BUILDS</span></div><p>Independent software studio by Hariom Patel.</p></div><div className="footer-socials">{socials.map(([label,href,Icon])=><a key={label} href={href} target="_blank" rel="noreferrer"><Icon size={15}/> {label}</a>)}</div></div><div className="footer-bottom-new"><span>© 2026 HariomBuilds. All systems operational.</span><span>Built by Hariom Patel.</span></div></div></footer>}
