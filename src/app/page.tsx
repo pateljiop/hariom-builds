@@ -29,7 +29,7 @@ export default function HomePage() {
         <div className="studio-shell nav-inner-new">
           <a href="#hero" className="nav-brand-new">HARIOM<span>BUILDS</span></a>
           <nav>
-            <a href="#services">Services</a><a href="#builder">Builder</a><a href="#systems">Systems</a><a href="#projects">Work</a><a href="#contact">Contact</a>
+            <a href="#services">Services</a><a href="#builder">Builder</a><a href="#systems">Systems</a><a href="#projects">Work</a><a href="/blog">Guides</a><a href="#contact">Contact</a>
           </nav>
           <a className="nav-cta" href="mailto:ahuzahariom@gmail.com?subject=HariomBuilds%20Intro">LET'S BUILD <span>↗</span></a>
         </div>
