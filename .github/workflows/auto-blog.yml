@@ -1,0 +1,33 @@
+name: Autonomous Blog Publishing
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate and publish one article
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GROK_MODEL: ${{ vars.GROK_MODEL }}
+        run: node scripts/generate-blog.mjs
+      - name: Commit article
+        run: |
+          git config user.name "hariom-builds-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/blog
+          git diff --cached --quiet && exit 0
+          git commit -m "content: publish researched developer article"
+          git push
