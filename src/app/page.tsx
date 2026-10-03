@@ -11,6 +11,7 @@ import ProjectsSection from './components/ProjectsSection';
 import DevTerminal from './components/DevTerminal';
 import TechMatrix from './components/TechMatrix';
 import PricingTiers from './components/PricingTiers';
+import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
 export default function HomePage() {
@@ -48,6 +49,7 @@ export default function HomePage() {
         <DevTerminal />
         <TechMatrix />
         <PricingTiers />
+        <ContactSection />
       </main>
       <Footer />
     </>
