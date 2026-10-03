@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { JetBrains_Mono, Syne } from 'next/font/google';
 import '../styles/tailwind.css';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hariombuilds.eu.cc';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hariombuild.eu.cc';
 const syne = Syne({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
 
@@ -17,17 +17,17 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Hariom Builds | Web Development, Automation & Software',
+    default: 'Hariom Builds | Software Studio, Automation & Web Development',
     template: '%s | Hariom Builds',
   },
   description:
-    'Hariom Builds creates modern websites, web applications, Python automation, APIs and custom software for practical business problems.',
+    'Hariom Builds is an independent software studio building modern websites, web applications, Python automation, APIs and custom software.',
   applicationName: 'Hariom Builds',
   creator: 'Hariom Patel',
   authors: [{ name: 'Hariom Patel', url: 'https://linkedin.com/in/pateljiop' }],
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Hariom Builds | Web Development, Automation & Software',
+    title: 'Hariom Builds | Software Studio, Automation & Web Development',
     description:
       'Web development, Python automation, APIs and custom software built by Hariom Builds.',
     url: SITE_URL,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hariom Builds | Web Development, Automation & Software',
+    title: 'Hariom Builds | Software Studio, Automation & Web Development',
     description:
       'Modern websites, automation, APIs and custom software by Hariom Builds.',
     images: ['/assets/images/08_Banner_Cover.png'],
