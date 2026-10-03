@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 4028",
-    "build": "next build",
+    "build": "npm run build:cloudflare",
     "build:next": "next build",
     "build:cloudflare": "npm install esbuild@0.28.2 --no-save --package-lock=false --legacy-peer-deps && npx @opennextjs/cloudflare@1.19.9 build",
     "start": "next dev -p 4028",
