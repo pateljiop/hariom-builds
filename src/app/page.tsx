@@ -29,13 +29,25 @@ export default function HomePage() {
         <div className="studio-shell nav-inner-new">
           <a href="#hero" className="nav-brand-new">HARIOM<span>BUILDS</span></a>
           <nav>
-            <a href="#services">Services</a><a href="#builder">Builder</a><a href="#systems">Systems</a><a href="#projects">Work</a><a href="/blog">Guides</a><a href="#contact">Contact</a>
+            <a href="#services">Services</a>
+            <a href="#builder">Builder</a>
+            <a href="#systems">Systems</a>
+            <a href="#projects">Work</a>
+            <a href="https://hariomdev.eu.cc" target="_blank" rel="noreferrer">Guides ↗</a>
+            <a href="#contact">Contact</a>
           </nav>
-          <a className="nav-cta" href="mailto:ahuzahariom@gmail.com?subject=HariomBuilds%20Intro">LET'S BUILD <span>↗</span></a>
+          <a className="nav-cta" href="mailto:hariompatel.dev@gmail.com?subject=HariomBuilds%20Project">LET'S BUILD <span>↗</span></a>
         </div>
       </header>
       <main>
-        <HeroSection /><ServicesBento /><MeetBuilder /><SystemsBlueprint /><ProjectsSection /><DevTerminal /><TechMatrix /><PricingTiers />
+        <HeroSection />
+        <ServicesBento />
+        <MeetBuilder />
+        <SystemsBlueprint />
+        <ProjectsSection />
+        <DevTerminal />
+        <TechMatrix />
+        <PricingTiers />
       </main>
       <Footer />
     </>
