@@ -9,3 +9,8 @@ binding = "ASSETS"
 
 [observability]
 enabled = true
+
+# Production custom domain
+[[routes]]
+pattern = "hariombuild.eu.cc"
+custom_domain = true
