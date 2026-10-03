@@ -1,8 +1,2 @@
 name = "hariom-builds"
 compatibility_date = "2026-10-03"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "hariom-builds-content"
-database_id = "REPLACE_WITH_CLOUDFLARE_D1_DATABASE_ID"
-migrations_dir = "migrations"
