@@ -6,14 +6,14 @@
     "dev": "next dev -p 4028",
     "build": "next build",
     "build:next": "next build",
-    "build:cloudflare": "npm install esbuild@0.28.2 --no-save --package-lock=false --legacy-peer-deps && npx @opennextjs/cloudflare@1.19.9 build",
+    "build:cloudflare": "opennextjs-cloudflare build",
     "start": "next dev -p 4028",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md,json}\"",
     "serve": "next start",
     "type-check": "tsc --noEmit",
-    "deploy": "npm install esbuild@0.28.2 --no-save --package-lock=false --legacy-peer-deps && npx @opennextjs/cloudflare@1.19.9 build && npx @opennextjs/cloudflare@1.19.9 deploy"
+    "deploy": "npm run build:cloudflare && wrangler deploy"
   },
   "dependencies": {
     "@dhiwise/component-tagger": "^1.0.16",
