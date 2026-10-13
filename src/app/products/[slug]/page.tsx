@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '../../../styles/universe.css';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, CheckCircle2, GitBranch } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, CheckCircle2, GitBranch, Orbit } from 'lucide-react';
 
 type Product = {
   slug: string;
