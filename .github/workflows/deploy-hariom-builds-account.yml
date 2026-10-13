@@ -2,9 +2,6 @@ name: Hariom Builds - Deploy to Dedicated Cloudflare Account
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - deploy/hariom-builds-branded-release
 
 permissions:
   contents: read
