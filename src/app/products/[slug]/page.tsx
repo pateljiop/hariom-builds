@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '../../../styles/universe.css';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, CheckCircle2, GitBranch, Orbit } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, CheckCircle2, GitBranch } from 'lucide-react';
 
 type Product = {
   slug: string;
@@ -107,7 +107,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   return (
     <main className="hb-detail">
       <header className="hb-detail-nav">
-        <Link href="/" className="hb-brand"><span className="hb-brand-mark"><Orbit size={19} /></span><span>HARIOM<span className="hb-brand-accent">BUILDS</span><small>INDEPENDENT SOFTWARE STUDIO</small></span></Link>
+        <Link href="/" className="hb-brand" aria-label="Hariom Builds home"><img className="hb-brand-logo" src="/assets/images/02_Compact_Logo.png" alt="Hariom Builds — Code, Create, Automate" /></Link>
         <Link href="/#products" className="hb-detail-back"><ArrowLeft size={14} /> ALL PROJECTS</Link>
       </header>
       <div className="hb-detail-shell">
