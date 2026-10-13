@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { JetBrains_Mono, Syne } from 'next/font/google';
 import '../styles/tailwind.css';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hariombuild.eu.cc';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hariombuilds.eu.cc';
 const syne = Syne({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
 
