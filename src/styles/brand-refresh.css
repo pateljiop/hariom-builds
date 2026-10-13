@@ -164,3 +164,70 @@ button, a { -webkit-tap-highlight-color: transparent; }
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Footer balance pass: compact the closing brand area without changing the identity. */
+.studio-footer .footer-hero {
+  padding-top: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 5vw, 4rem);
+}
+.studio-footer .footer-grid-new {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(244,241,234,.1);
+}
+.studio-footer .footer-brand-logo {
+  width: min(170px, 100%);
+  max-height: 48px;
+}
+.studio-footer .footer-grid-new p {
+  max-width: 28rem;
+  margin: .85rem 0 0;
+  color: #96938b;
+  font-size: .82rem;
+  line-height: 1.65;
+}
+.studio-footer .footer-socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+.studio-footer .footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 38px;
+  padding: 0 .8rem;
+  border: 1px solid rgba(244,241,234,.12);
+  border-radius: 999px;
+  color: #aaa79f;
+  font-size: .72rem;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.studio-footer .footer-socials a:hover {
+  color: #f4f1ea;
+  border-color: rgba(199,255,61,.35);
+  background: rgba(199,255,61,.035);
+}
+.studio-footer .footer-bottom-new {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0 1.25rem;
+  border-top: 1px solid rgba(244,241,234,.1);
+  color: #77756e;
+  font-size: .68rem;
+}
+@media (max-width: 700px) {
+  .studio-footer .footer-hero { padding-top: 3.25rem; padding-bottom: 2.5rem; }
+  .studio-footer .footer-grid-new { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.5rem 0; }
+  .studio-footer .footer-brand-logo { width: min(155px, 72vw); max-height: 42px; }
+  .studio-footer .footer-socials { justify-content: flex-start; gap: .45rem; }
+  .studio-footer .footer-socials a { min-height: 35px; padding: 0 .65rem; font-size: .68rem; }
+  .studio-footer .footer-bottom-new { flex-direction: column; gap: .45rem; }
+}
