@@ -106,3 +106,16 @@
   .hb-node-3 { bottom: 6%; left: calc(50% - 24px); }
   .hb-node-4 { top: 29%; left: 4%; }
 }
+
+
+/* Respect operating-system motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  .hb-site *,
+  .hb-site *::before,
+  .hb-site *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
