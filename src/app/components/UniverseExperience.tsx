@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowDownRight, ArrowUpRight, Bot, Boxes, Braces, CheckCircle2, Compass, GitBranch, Globe2, Layers3, Mail, Orbit, Sparkles, Workflow } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Bot, Boxes, Braces, CheckCircle2, Compass, GitBranch, Globe2, Layers3, Mail, Sparkles, Workflow } from 'lucide-react';
 
 const products = [
  {id:'hariom-ai',name:'Hariom AI',category:'PERSONAL AI WORKSTATION',description:'A Jarvis-inspired Windows assistant focused on controlled tool use, human approval and verified task execution.',status:'In development',tone:'active',initials:'HA',href:'https://github.com/pateljiop/hariom-ai',source:'https://github.com/pateljiop/hariom-ai',icon:Bot,color:'cyan'},
