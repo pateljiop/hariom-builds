@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hariombuild.eu.cc';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hariombuilds.eu.cc';
 const productSlugs = ['hariom-ai', 'haryomix', 'expense-tracker', 'web-scraper', 'developer-portfolio'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
