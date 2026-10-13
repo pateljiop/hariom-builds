@@ -31,3 +31,20 @@
 .hb-detail-content{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}.hb-detail-content>article{padding:27px;border:1px solid var(--line);background:rgba(14,20,32,.7)}.hb-detail-content>article:last-child{grid-column:1/-1}.hb-detail-content h2{margin:15px 0 12px;font:600 24px var(--font-display);letter-spacing:-.04em}.hb-detail-content p{color:var(--muted);font-size:11px;line-height:1.9}.hb-detail-checklist ul{display:grid;grid-template-columns:1fr 1fr;gap:13px 25px;padding:0;margin:20px 0;list-style:none}.hb-detail-checklist li{display:flex;align-items:flex-start;gap:9px;color:#b4c2d4;font-size:10px;line-height:1.8}.hb-detail-checklist li svg{flex:0 0 auto;margin-top:2px;color:var(--green)}.hb-detail-note{padding-top:14px;border-top:1px solid var(--line);font-size:9px!important}.hb-detail-contact{padding:65px 25px;text-align:center;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,rgba(57,147,205,.12),transparent 70%),rgba(11,16,25,.7)}.hb-detail-contact h2{margin:17px 0 10px;font:600 clamp(2rem,4vw,3.2rem) var(--font-display);letter-spacing:-.06em}.hb-detail-contact p{margin:0;color:var(--muted);font-size:11px}.hb-detail-contact .hb-button{margin-top:23px}.hb-detail-footer{display:flex;justify-content:space-between;gap:15px;margin-top:45px;padding:20px max(24px,calc((100vw - 1120px)/2));border-top:1px solid var(--line);color:#718197;font-size:8px;letter-spacing:.1em}.hb-detail-footer a:hover{color:var(--cyan)}
 @media(max-width:700px){.hb-detail-nav{padding:13px 16px}.hb-detail-nav .hb-brand{font-size:11px}.hb-detail-nav .hb-brand small{font-size:6px}.hb-detail-back{font-size:7px}.hb-detail-shell{width:calc(100% - 32px)}.hb-detail-kicker{align-items:flex-start;flex-direction:column;gap:12px}.hb-detail-hero{grid-template-columns:1fr;gap:30px;padding:34px 22px}.hb-detail-orbit{left:50%;top:23%}.hb-detail-orbit-one{width:235px;height:235px}.hb-detail-orbit-two{width:175px;height:175px}.hb-detail-emblem{width:120px;height:120px;border-radius:28px}.hb-detail-copy h1{font-size:clamp(2.8rem,13vw,4.2rem)}.hb-detail-content{grid-template-columns:1fr}.hb-detail-content>article:last-child{grid-column:auto}.hb-detail-content>article{padding:22px}.hb-detail-checklist ul{grid-template-columns:1fr}.hb-detail-contact{padding:45px 18px}.hb-detail-footer{padding:17px 16px;flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.hb-detail *,.hb-detail *:before,.hb-detail *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* Authentic Hariom Builds identity: use the repository's own logo and mascot. */
+.hb-brand { min-width: 0; }
+.hb-brand-logo { display:block; width:clamp(148px, 17vw, 204px); height:auto; max-height:54px; object-fit:contain; object-position:left center; }
+.hb-founder-avatar { overflow:hidden; padding:3px; }
+.hb-founder-avatar img { display:block; width:100%; height:100%; object-fit:contain; }
+.hb-core { position:relative; }
+.hb-core-mascot { display:block; width:clamp(88px, 10vw, 126px); height:clamp(88px, 10vw, 126px); object-fit:contain; margin:0 auto 9px; filter:drop-shadow(0 0 20px rgba(118,228,255,.14)); }
+.hb-core strong { position:relative; }
+.hb-core small { letter-spacing:.12em; }
+@media (max-width:640px) {
+  .hb-brand-logo { width:clamp(138px, 43vw, 176px); max-height:48px; }
+  .hb-core-mascot { width:82px; height:82px; margin-bottom:6px; }
+}
+
+.footer-brand-logo { display:block; width:min(220px,100%); height:auto; max-height:62px; object-fit:contain; object-position:left center; }
