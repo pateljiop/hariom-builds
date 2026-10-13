@@ -39,7 +39,7 @@ const products: Product[] = [
     summary: 'A student-first productivity workspace bringing practical study and document workflows into one coherent experience.',
     problem: 'Students often jump between separate tools for study tasks, file conversion, and everyday academic work. Haryomix aims to make those workflows easier to find and use.',
     direction: 'A modular workspace with focused tools, dedicated feature pages, and an interface designed to remain useful on mobile as well as desktop.',
-    current: ['Workspace and feature navigation redesign', 'Document utility discovery and organisation', 'Student-oriented product experience'],
+    current: ['Code Doctor: local pattern checks for common syntax mistakes', 'PPT Studio: editable starter PowerPoint exports', 'PDF and Image Studio utilities', 'Exam revision practice, Study Planner, Flashcards, and Pomodoro timer', 'AI-assisted workflows are available separately from local-only study tools'],
     source: 'https://github.com/pateljiop/Haryomix',
     accent: 'violet',
   },
