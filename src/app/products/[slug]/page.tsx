@@ -111,7 +111,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         <Link href="/#products" className="hb-detail-back"><ArrowLeft size={14} /> ALL PROJECTS</Link>
       </header>
       <div className="hb-detail-shell">
-        <div className="hb-detail-kicker"><span>PRODUCT FILE / {product.slug.toUpperCase()}</span><span className={'hb-status hb-status-' + (product.status === 'Live website' ? 'live' : 'active')}><i />{product.status}</span></div>
+        <div className="hb-detail-kicker"><span>PRODUCT FILE / {product.slug.toUpperCase()}</span><span className={'hb-status hb-status-' + (product.status.startsWith('Live') ? 'live' : 'active')}><i />{product.status}</span></div>
         <section className={'hb-detail-hero hb-detail-' + product.accent}>
           <div className="hb-detail-orbit hb-detail-orbit-one" /><div className="hb-detail-orbit hb-detail-orbit-two" />
           <div className="hb-detail-emblem"><Orbit size={34} /><span>{product.name.split(/\s+/).map((part) => part[0]).join('').slice(0, 3)}</span></div>
