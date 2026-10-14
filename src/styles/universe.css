@@ -119,3 +119,10 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Keyboard navigation: visible focus and a skip link without changing the visual identity. */
+.hb-skip-link{position:fixed;top:10px;left:10px;z-index:100;transform:translateY(-160%);padding:12px 16px;border:1px solid var(--cyan);border-radius:4px;background:#080b12;color:var(--text);font-size:12px;box-shadow:0 8px 28px rgba(0,0,0,.35);transition:transform .18s ease}
+.hb-skip-link:focus{transform:translateY(0);outline:2px solid var(--cyan);outline-offset:3px}
+.hb-site a:focus-visible,.hb-site button:focus-visible,.hb-detail a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.hb-site .hb-menu-toggle:focus-visible{outline-offset:5px}
