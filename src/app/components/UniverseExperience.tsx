@@ -18,7 +18,7 @@ const services=[
 export default function UniverseExperience(){
  const [active,setActive]=useState(products[0].id); const [menuOpen,setMenuOpen]=useState(false); const selected=products.find(p=>p.id===active)??products[0]; const closeMenu=()=>setMenuOpen(false);
  return <div className="hb-site"><div className="hb-grain" aria-hidden="true"/>
- <header className="hb-header"><a className="hb-brand" href="#top" onClick={closeMenu} aria-label="Hariom Builds home"><img className="hb-brand-logo" src="/assets/images/02_Compact_Logo.png" alt="Hariom Builds — Code, Create, Automate" /></a>
+ <a className="hb-skip-link" href="#top">Skip to content</a><header className="hb-header"><a className="hb-brand" href="#top" onClick={closeMenu} aria-label="Hariom Builds home"><img className="hb-brand-logo" src="/assets/images/02_Compact_Logo.png" alt="Hariom Builds — Code, Create, Automate" /></a>
  <button className="hb-menu-toggle" id="hb-menu-toggle" aria-label={menuOpen?'Close menu':'Open menu'} aria-expanded={menuOpen} aria-controls="hb-main-navigation" onClick={()=>setMenuOpen(!menuOpen)}><span/><span/></button>
  <nav id="hb-main-navigation" className={menuOpen?'hb-nav hb-nav-open':'hb-nav'} aria-label="Main navigation"><a href="#universe" onClick={closeMenu}>Universe</a><a href="#products" onClick={closeMenu}>Products</a><a href="#services" onClick={closeMenu}>Services</a><a href="#approach" onClick={closeMenu}>Approach</a><a className="hb-nav-cta" href="#contact" onClick={closeMenu}>Start a project <ArrowUpRight size={14}/></a></nav></header>
  <main id="top">
