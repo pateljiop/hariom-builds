@@ -83,6 +83,8 @@ const products: Product[] = [
   },
 ];
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hariombuilds.eu.cc';
+
 export function generateStaticParams() {
   return products.map(({ slug }) => ({ slug }));
 }
@@ -95,7 +97,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: product.name,
     description: product.summary,
     alternates: { canonical: '/products/' + product.slug },
-    openGraph: { title: product.name + ' | Hariom Builds', description: product.summary, type: 'website' },
+    openGraph: {
+      title: product.name + ' | Hariom Builds',
+      description: product.summary,
+      type: 'website',
+      url: siteUrl + '/products/' + product.slug,
+    },
   };
 }
 
@@ -104,8 +111,37 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const product = products.find((item) => item.slug === slug);
   if (!product) notFound();
 
+  const pageUrl = siteUrl + '/products/' + product.slug;
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: product.name,
+    description: product.summary,
+    url: pageUrl,
+    creator: {
+      '@type': 'Person',
+      name: 'Hariom Patel',
+      url: 'https://hariom-portfolio.pages.dev',
+    },
+    genre: product.category,
+    inLanguage: 'en',
+    ...(product.source ? { codeRepository: product.source } : {}),
+    ...(product.live ? { sameAs: product.live } : {}),
+  };
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: siteUrl + '/#products' },
+      { '@type': 'ListItem', position: 3, name: product.name, item: pageUrl },
+    ],
+  };
+
   return (
     <main className="hb-detail">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c') }} />
       <header className="hb-detail-nav">
         <Link href="/" className="hb-brand" aria-label="Hariom Builds home"><img className="hb-brand-logo" src="/assets/images/02_Compact_Logo.png" alt="Hariom Builds — Code, Create, Automate" /></Link>
         <Link href="/#products" className="hb-detail-back"><ArrowLeft size={14} /> ALL PROJECTS</Link>
